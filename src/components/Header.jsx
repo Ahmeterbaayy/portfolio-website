@@ -19,7 +19,6 @@ const Header = () => {
 
   const handleHireMe = async () => {
     setIsLoading(true);
-    
     try {
       const userData = {
         name: "Almila Su",
@@ -28,9 +27,7 @@ const Header = () => {
         timestamp: new Date().toISOString(),
         language: language
       };
-
-      await apiServices.sendToWorkintech(userData);
-      
+      await apiServices.createUser(userData);
     } catch (error) {
       console.error('API Error:', error);
     } finally {
@@ -45,11 +42,13 @@ const Header = () => {
         <div className="flex items-center gap-4">
           {/* Dark Mode Toggle */}
           <div className="flex items-center gap-3">
-            <div 
-              className={`relative cursor-pointer transition-all duration-300 w-14 h-6 rounded-xl ${
+            <button
+              aria-label="toggle theme"
+              type="button"
+              onClick={toggleTheme}
+              className={`relative cursor-pointer transition-all duration-300 w-14 h-6 rounded-xl outline-none border-none ${
                 isDark ? 'bg-gray-600' : 'bg-primary-600'
               }`}
-              onClick={toggleTheme}
             >
               <div 
                 className={`absolute top-1 w-4 h-4 bg-yellow-300 rounded-full transition-all duration-300 shadow-lg ${
@@ -60,7 +59,7 @@ const Header = () => {
                   <div className="absolute top-0.5 left-1.5 w-2.5 h-3 bg-gray-600 rounded-full"></div>
                 )}
               </div>
-            </div>
+            </button>
             <span className="text-gray-500 dark:text-gray-400 text-sm font-bold tracking-wider">
               {isDark ? content.header.lightMode : content.header.darkMode}
             </span>
@@ -72,6 +71,7 @@ const Header = () => {
           <button 
             onClick={toggleLanguage}
             className="text-sm font-bold tracking-wider transition-colors hover:opacity-80"
+            aria-label="toggle language"
           >
             {language === 'en' ? (
               <span>
@@ -140,6 +140,7 @@ const Header = () => {
           <button 
             onClick={handleHireMe}
             disabled={isLoading}
+            aria-label="hire me"
             className={`
               px-8 py-3 rounded-md transition-colors
               ${isLoading 
@@ -154,7 +155,7 @@ const Header = () => {
                 <span>Gönderiliyor...</span>
               </div>
             ) : (
-              content.header.hireMe
+              'Hire Me'
             )}
           </button>
         </nav>

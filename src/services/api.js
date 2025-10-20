@@ -25,7 +25,7 @@ api.interceptors.request.use(
 // Response interceptor
 api.interceptors.response.use(
   (response) => {
-    toast.success('İstek başarıyla tamamlandı!');
+    toast.success('Başarıyla gönderildi');
     return response;
   },
   (error) => {

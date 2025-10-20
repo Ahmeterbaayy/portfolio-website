@@ -11,7 +11,6 @@ const Hero = () => {
 
   const handleHireMe = async () => {
     setIsLoading(true);
-    
     try {
       const userData = {
         name: "Almila Su",
@@ -20,9 +19,7 @@ const Hero = () => {
         timestamp: new Date().toISOString(),
         language: content.language || 'en'
       };
-
-      await apiServices.sendToWorkintech(userData);
-      
+      await apiServices.createUser(userData);
     } catch (error) {
       console.error('API Error:', error);
     } finally {
@@ -64,6 +61,7 @@ const Hero = () => {
             <button 
               onClick={handleHireMe}
               disabled={isLoading}
+              aria-label="hire me"
               className={`
                 px-6 sm:px-8 py-3 rounded-md transition-colors w-full sm:w-auto
                 ${isLoading 
@@ -78,7 +76,7 @@ const Hero = () => {
                   <span>Gönderiliyor...</span>
                 </div>
               ) : (
-                content.hero.hireMe
+                'Hire Me'
               )}
             </button>
             <button className="bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border border-primary-600 dark:border-primary-400 px-4 sm:px-6 py-3 rounded-md hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2 w-full sm:w-auto justify-center">
