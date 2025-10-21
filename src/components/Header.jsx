@@ -27,7 +27,7 @@ const Header = () => {
         timestamp: new Date().toISOString(),
         language: language
       };
-      await apiServices.createUser(userData);
+  await apiServices.createUser(userData, language);
     } catch (error) {
       console.error('API Error:', error);
     } finally {
@@ -155,7 +155,7 @@ const Header = () => {
                 <span>Gönderiliyor...</span>
               </div>
             ) : (
-              'Hire Me'
+              content.header.hireMe
             )}
           </button>
         </nav>

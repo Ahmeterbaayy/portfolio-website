@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import contentData from '../data/content.json';
 
 // Base API configuration
 const api = axios.create({
@@ -10,14 +11,23 @@ const api = axios.create({
   },
 });
 
+// Get language from localStorage or default to 'en'
+
+export function getToastText(type, lang) {
+  if (!lang || !contentData[lang] || !contentData[lang].toast) lang = 'en';
+  return contentData[lang]?.toast?.[type] || contentData['en']?.toast?.[type] || '';
+}
+
 // Request interceptor
+// Not: API toast'ları için context'ten language parametresi iletilmeli. Aksi halde localStorage'dan okunur.
 api.interceptors.request.use(
   (config) => {
-    toast.info('İstek gönderiliyor...', { autoClose: 1000 });
+    // config.language context'ten gelmeli, yoksa localStorage'dan alınır
+  toast.info(getToastText('request', config.language), { autoClose: 1000 });
     return config;
   },
   (error) => {
-    toast.error('İstek gönderilemedi!');
+  toast.error(getToastText('requestError', error?.config?.language));
     return Promise.reject(error);
   }
 );
@@ -25,12 +35,14 @@ api.interceptors.request.use(
 // Response interceptor
 api.interceptors.response.use(
   (response) => {
-    toast.success('Başarıyla gönderildi');
+  toast.success(getToastText('response', response.config?.language));
     return response;
   },
   (error) => {
-    const errorMessage = error.response?.data?.error || 'Bir hata oluştu!';
+    const errorMessage = error.response?.data?.error || getToastText('genericError', error?.config?.language);
     toast.error(errorMessage);
+
+
     return Promise.reject(error);
   }
 );
@@ -38,9 +50,9 @@ api.interceptors.response.use(
 // API Services
 export const apiServices = {
   // Send user data to workintech endpoint
-  sendToWorkintech: async (userData) => {
+  sendToWorkintech: async (userData, language) => {
     try {
-      const response = await api.post('/workintech', userData);
+      const response = await api.post('/workintech', userData, { language });
       return response.data;
     } catch (error) {
       throw error;
@@ -48,9 +60,9 @@ export const apiServices = {
   },
 
   // Get user data for demo purposes
-  getUsers: async () => {
+  getUsers: async (language) => {
     try {
-      const response = await api.get('/users');
+      const response = await api.get('/users', { language });
       return response.data;
     } catch (error) {
       throw error;
@@ -58,9 +70,9 @@ export const apiServices = {
   },
 
   // Create user for demo purposes
-  createUser: async (userData) => {
+  createUser: async (userData, language) => {
     try {
-      const response = await api.post('/users', userData);
+      const response = await api.post('/users', userData, { language });
       return response.data;
     } catch (error) {
       throw error;

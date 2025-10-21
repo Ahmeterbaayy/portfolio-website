@@ -5,7 +5,7 @@ import { apiServices } from '../services/api';
 import { toast } from 'react-toastify';
 
 const Hero = () => {
-  const { content } = useLanguage();
+  const { language, content } = useLanguage();
   const { isDark } = useTheme();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,9 +17,9 @@ const Hero = () => {
         email: "almilasucode@gmail.com",
         message: "Hire request from portfolio website - Hero section",
         timestamp: new Date().toISOString(),
-        language: content.language || 'en'
+        language: language
       };
-      await apiServices.createUser(userData);
+  await apiServices.createUser(userData, language);
     } catch (error) {
       console.error('API Error:', error);
     } finally {
@@ -73,10 +73,10 @@ const Hero = () => {
               {isLoading ? (
                 <div className="flex items-center justify-center gap-2">
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>Gönderiliyor...</span>
+                  <span>{content.toast.loading}</span>
                 </div>
               ) : (
-                'Hire Me'
+                content.hero.hireMe
               )}
             </button>
             <button className="bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border border-primary-600 dark:border-primary-400 px-4 sm:px-6 py-3 rounded-md hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2 w-full sm:w-auto justify-center">

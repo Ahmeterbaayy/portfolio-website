@@ -1,5 +1,16 @@
 {
   "en": {
+    "toast": {
+      "save": "Your preferences have been saved!",
+      "error": "An error occurred while saving!",
+      "readError": "An error occurred while reading!",
+      "request": "Sending request...",
+      "requestError": "Request failed!",
+      "response": "Sent successfully",
+  "genericError": "An error occurred!",
+  "loading": "Sending...",
+  "missingApi": "API not found!"
+    },
     "header": {
       "skills": "Skills",
       "projects": "Projects",
@@ -91,6 +102,17 @@
     }
   },
   "tr": {
+    "toast": {
+      "save": "Tercihleriniz kaydedildi!",
+      "error": "Veri kaydetme hatası oluştu!",
+      "readError": "Veri okuma hatası oluştu!",
+      "request": "İstek gönderiliyor...",
+      "requestError": "İstek gönderilemedi!",
+      "response": "Başarıyla gönderildi",
+  "genericError": "Bir hata oluştu!",
+  "loading": "Gönderiliyor...",
+  "missingApi": "API bulunamadı!"
+    },
     "header": {
       "skills": "Yetenekler",
       "projects": "Projeler",
