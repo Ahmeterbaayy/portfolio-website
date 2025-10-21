@@ -32,24 +32,27 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
             <a 
-              href="#" 
+              href={content.footer.links.personalBlog}
+              target="_blank" rel="noopener noreferrer"
               className={`hover:text-primary-600 dark:hover:text-primary-400 transition-colors ${
                 isDark ? 'text-purple-300' : 'text-black'
               }`}
             >
-              {content.footer.links.personalBlog}
+              Blog
             </a>
             <a 
-              href="#" 
+              href={content.footer.links.github}
+              target="_blank" rel="noopener noreferrer"
               className="text-green-500 hover:text-green-600 transition-colors"
             >
-              {content.footer.links.github}
+              Github
             </a>
             <a 
-              href="#" 
+              href={content.footer.links.linkedin}
+              target="_blank" rel="noopener noreferrer"
               className="text-blue-600 hover:text-blue-700 transition-colors"
             >
-              {content.footer.links.linkedin}
+              Linkedin
             </a>
           </div>
         </div>

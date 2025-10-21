@@ -33,23 +33,24 @@ const ProjectCard = ({ project }) => {
       </p>
       
       <div className="flex flex-wrap gap-1.5">
-        {project.techStack.map((tech, index) => (
+        {project.techStack.filter(tech => tech.toLowerCase() !== 'redux').map((tech, index) => (
           <TechPill key={index} tech={tech} />
         ))}
       </div>
-      
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4">
         <a 
-          href="#" 
+          href={project.github} 
+          target="_blank" rel="noopener noreferrer"
           className="text-primary-600 dark:text-primary-400 hover:underline"
         >
-          {project.github}
+          Github
         </a>
         <a 
-          href="#" 
+          href={project.viewSite} 
+          target="_blank" rel="noopener noreferrer"
           className="text-primary-600 dark:text-primary-400 hover:underline"
         >
-          {project.viewSite}
+          View Site
         </a>
       </div>
     </div>

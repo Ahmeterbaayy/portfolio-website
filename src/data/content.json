@@ -58,24 +58,24 @@
           "name": "Workintech",
           "description": "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
           "techStack": ["react", "redux", "axios"],
-          "github": "Github",
-          "viewSite": "View Site",
+          "github": "https://github.com/Ahmeterbaayy/portfolio-website",
+          "viewSite": "https://portfolio-demo.example.com",
           "image": "https://static.codia.ai/image/2025-10-20/ZFKihmzzRX.png"
         },
         {
           "name": "Random Jokes",
           "description": "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
           "techStack": ["react", "redux", "axios"],
-          "github": "Github",
-          "viewSite": "View Site",
+          "github": "https://github.com/Ahmeterbaayy/random-jokes",
+          "viewSite": "https://random-jokes-demo.example.com",
           "image": "https://static.codia.ai/image/2025-10-20/wD2qjcKhGZ.png"
         },
         {
           "name": "Journey",
           "description": "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
           "techStack": ["react", "redux", "axios"],
-          "github": "Github",
-          "viewSite": "View Site",
+          "github": "https://github.com/Ahmeterbaayy/journey",
+          "viewSite": "https://journey-demo.example.com",
           "image": "https://static.codia.ai/image/2025-10-20/vcEzbxFvQC.png"
         }
       ]
@@ -84,9 +84,9 @@
       "title": "Let's work together on your next product.",
       "email": "almilasucode@gmail.com",
       "links": {
-        "personalBlog": "Personal Blog",
-        "github": "Github",
-        "linkedin": "Linkedin"
+        "personalBlog": "https://almilasublog.example.com",
+        "github": "https://github.com/Ahmeterbaayy",
+        "linkedin": "https://linkedin.com/in/almilasucode"
       }
     }
   },
